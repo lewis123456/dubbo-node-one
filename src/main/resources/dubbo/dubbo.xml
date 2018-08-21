@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="consumer"  />
+    <dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" />
+    <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" dispatcher="all"
+    threadpool="fixed" threads="100"/>
+
+    <dubbo:consumer check="${dubbo.consumer.check}"/>
+
+    <!-- 消费服务 -->
+    <dubbo:reference id="accountService" interface="org.lewis.dubbo.interfaces.AccountService"
+                     mock="true" retries="2"/>
+
+    <dubbo:reference id="billService" interface="org.lewis.dubbo.interfaces.BillService"
+                     mock="true" retries="2"/>
+
+    <!-- 提供服务 -->
+    <bean id="userService" class="org.lewis.dubbo.node.one.service.impl.UserServiceImpl" />
+    <dubbo:service interface="org.lewis.dubbo.interfaces.UserService" ref="userService" timeout="12000"/>
+</beans>

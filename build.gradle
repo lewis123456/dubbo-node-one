@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group 'org.lewis'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    mavenCentral()
+}
+
+List dubbo = [
+        'com.alibaba:dubbo:2.6.2',
+        'org.apache.zookeeper:zookeeper:3.4.13',
+        'com.101tec:zkclient:0.10',
+        'org.apache.curator:curator-framework:2.11.1'
+]
+
+List spring = [
+        'org.springframework.boot:spring-boot-starter-web:1.4.7.RELEASE'
+]
+
+List lombok = [
+        'org.projectlombok:lombok:1.16.18'
+]
+
+dependencies {
+    compile dubbo, spring, lombok, fileTree(dir:'libs',include:['*.jar'])
+    testCompile dubbo, spring, lombok, fileTree(dir:'libs',include:['*.jar'])
+}
+
+configurations {
+    all*.exclude group:'ch.qos.logback', module:'logback-classic'
+    all*.exclude group:'org.slf4j', module:'log4j-over-slf4j'
+}
