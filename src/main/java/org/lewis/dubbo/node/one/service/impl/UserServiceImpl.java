@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Log4j
 @Service
+@org.springframework.stereotype.Service("org.lewis.dubbo.node.one.UserService")
 public class UserServiceImpl implements UserService {
     @Value("${server.port}")
     private int serverPort;
