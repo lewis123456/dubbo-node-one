@@ -15,13 +15,13 @@
     <dubbo:consumer check="${dubbo.consumer.check}"/>
 
     <!-- 消费服务 -->
-    <dubbo:reference id="accountService" interface="org.lewis.dubbo.interfaces.AccountService"
+    <dubbo:reference id="accountService" interface="org.lewis.dubbo.node.two.AccountService"
                      mock="true" retries="2"/>
 
-    <dubbo:reference id="billService" interface="org.lewis.dubbo.interfaces.BillService"
+    <dubbo:reference id="billService" interface="org.lewis.dubbo.node.two.BillService"
                      mock="true" retries="2"/>
 
     <!-- 提供服务 -->
     <bean id="userService" class="org.lewis.dubbo.node.one.service.impl.UserServiceImpl" />
-    <dubbo:service interface="org.lewis.dubbo.interfaces.UserService" ref="userService" timeout="12000"/>
+    <dubbo:service interface="org.lewis.dubbo.node.one.UserService" ref="userService" timeout="12000"/>
 </beans>

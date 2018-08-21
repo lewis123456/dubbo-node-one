@@ -1,7 +1,7 @@
 package org.lewis.dubbo.node.one.controller;
 
 import lombok.extern.log4j.Log4j;
-import org.lewis.dubbo.interfaces.AccountService;
+import org.lewis.dubbo.node.two.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

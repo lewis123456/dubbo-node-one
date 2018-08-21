@@ -2,7 +2,7 @@ package org.lewis.dubbo.node.one.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.log4j.Log4j;
-import org.lewis.dubbo.interfaces.UserService;
+import org.lewis.dubbo.node.one.UserService;
 import org.springframework.beans.factory.annotation.Value;
 
 @Log4j
